@@ -9,11 +9,12 @@
 }
 
 html {
-    scroll-behavior: smooth; 
+    scroll-behavior: smooth; /* السكرول الناعم هنا بس عشان ميعلقش الموبايل */
 }
  
 body {
-    overflow-x: hidden; 
+    overflow-x: hidden; /* عشان نمنع أي سكرول أفقي بالغلط */
+    width: 100%;
     background-color: #050505; 
     color: #f5f5f5;
 }
@@ -523,15 +524,18 @@ body {
 }
 
 /* =========================================================
-   إخفاء زرار التشغيل (Play Button) في وضع توفير الطاقة
+   إخفاء زرار التشغيل (Play Button) في وضع توفير الطاقة للآيفون
    ========================================================= */
 video::-webkit-media-controls,
+video::-webkit-media-controls-enclosure,
+video::-webkit-media-controls-overlay-play-button,
 video::-webkit-media-controls-start-playback-button,
 video::-webkit-media-controls-play-button {
     display: none !important;
     -webkit-appearance: none !important;
+    opacity: 0 !important;
 }
 
 video {
-    pointer-events: none; /* بيمنع أي تفاعل مع الفيديو عشان محدش يدوس عليه بالغلط */
+    pointer-events: none !important;
 }
