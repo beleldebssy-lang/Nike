@@ -9,12 +9,11 @@
 }
 
 html {
-    scroll-behavior: smooth; /* ده المكان الوحيد الصح بتاعها عشان السكرول يكون ناعم وخفيف */
+    scroll-behavior: smooth; 
 }
  
 body {
-    overflow-x: hidden; /* بنخليها للـ body بس عشان الموبايلات متعملش بلوك للسكرول */
-    width: 100%;
+    overflow-x: hidden; 
     background-color: #050505; 
     color: #f5f5f5;
 }
@@ -84,17 +83,11 @@ body {
     position: relative;
     width: 100%;
     overflow: hidden;
-    isolation: isolate; /* بتعمل stacking context خاص بـ #hero، عشان اللون الاحتياطي يفضل
-                            وراء الفيديو (z-index سالب) مش فوقه، وميغطهوش خالص */
-    background-color: #04100f; /* لون احتياطي لحد ما الفيديو يتحمّل، عشان مايبانش أبيض/فاضي */
- 
-    /* بالترتيب ده: 100vh كـ fallback أساسي، بعدين dvh (الارتفاع الحقيقي الظاهر بعد
-       ما نحسب شريط العنوان على الموبايل)، وأخيرًا متغير --vh اللي بنحسبه بالجافاسكريبت
-       كـ fallback إضافي للمتصفحات القديمة اللي مش فاهمة dvh. المتصفح بياخد آخر سطر مفهوم له. */
+    isolation: isolate; 
+    background-color: #04100f; 
     height: 100vh;
     height: 100dvh;
     height: calc(var(--vh, 1vh) * 100);
- 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -132,7 +125,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh; 
-    padding: 0 20px; /* عشان النص ميلزقش في حروف الشاشة على الموبايل */
+    padding: 0 20px;
 }
  
 .hero-content h1 {
@@ -230,7 +223,7 @@ body {
     display: flex;
     flex-direction: column;
     padding: 40px;
-    max-width: 100%; /* عشان السايدبار ميطلعش برة الشاشة في الموبايلات الصغيرة */
+    max-width: 100%;
 }
  
 .sidebar.active {
@@ -332,10 +325,10 @@ body {
    تنسيق تذييل الصفحة (Footer / About)
    ========================================= */
 .footer-section {
-    background-color: #020202; /* أسود أغمق من الخلفية */
+    background-color: #020202;
     padding: 80px 20px 40px;
     text-align: center;
-    border-top: 1px solid rgba(0, 229, 255, 0.2); /* خط نيون خفيف من فوق */
+    border-top: 1px solid rgba(0, 229, 255, 0.2); 
     position: relative;
     z-index: 2;
 }
@@ -420,7 +413,6 @@ body {
    استجابة الموقع للموبايل
    ========================================================= */
 @media (max-width: 480px) {
-    /* الناف بار: بنسمحله يعمل wrap لو مش لاقي مكان بدل ما يقطع من الشاشة */
     #navbar {
         padding: 14px 16px;
         flex-wrap: wrap;
@@ -452,7 +444,6 @@ body {
         height: 26px;
     }
  
-    /* الهيرو والعنوان الرئيسي */
     .hero-content h1 {
         font-size: 2.2rem;
         letter-spacing: 1px;
@@ -469,7 +460,6 @@ body {
         letter-spacing: 1px;
     }
  
-    /* قسم المحتوى */
     .content-section {
         padding: 60px 18px;
     }
@@ -484,7 +474,6 @@ body {
         line-height: 1.7;
     }
  
-    /* السايدبار */
     .sidebar {
         width: 82%;
         max-width: 300px;
@@ -503,7 +492,6 @@ body {
         padding-bottom: 12px;
     }
  
-    /* الفوتر */
     .footer-logo {
         font-size: 16px;
     }
@@ -512,7 +500,7 @@ body {
     }
 }
  
-/* أجهزة صغيرة جدًا (٣٦٠ بكسل وأقل زي الآيفون SE) */
+/* أجهزة صغيرة جدًا (٣٦٠ بكسل وأقل) */
 @media (max-width: 360px) {
     .hero-content h1 {
         font-size: 1.9rem;
@@ -527,16 +515,9 @@ body {
  
 /* =========================================================
    تعديل موضع الفيديو على الشاشات الضيقة (موبايل بالطول)
-   السبب الحقيقي إن الشخصية في الفيديو موجودة في الجزء اليمين
-   من الكادر، وعلى شاشة طولية object-fit: cover بيعمل قص من
-   المنتصف افتراضيًا (object-position: center)، فبيوري جزء
-   فاضي/عادي من الخلفية بدل الشخصية. الحل: نزوّد object-position
-   على المحور الأفقي بس عشان الكروب يميل ناحية اليمين فين
-   الشخصية، من غير ما نأثر على شكل اللاب تاب خالص
    ========================================================= */
 @media (max-width: 768px) {
     .video-bg {
         object-position: 78% center;
     }
 }
- 
