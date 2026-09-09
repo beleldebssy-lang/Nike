@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike | Blue Lock</title>
+    <link rel="stylesheet" href="css/master.css">
+</head>
+<body>
+
+    <!-- شريط التنقل (Navbar) -->
+    <nav id="navbar">
+        <div class="logo">
+            <svg viewBox="0 0 24 24" width="60" height="35" fill="white">
+                <path d="M24 7.8L9.04 15.6c-2.32 1.31-4.7 1.77-7.23.95C.13 15.44-1.14 13.9.79 10.98c.45-.69 1-1.34 1.58-1.95.83-.87 1.62-1.78 2.45-2.65-.63.95-1.14 1.95-1.6 2.97-.47 1.05-.62 2.1-.2 3.1.53 1.25 1.77 1.74 3.07 1.48 1.98-.38 3.86-1.15 5.6-2.07l12.31-7.06z"/>
+            </svg>
+            NIKE
+        </div>
+        
+        <!-- الصندوق اللي بيجمع اللينكات والزرار مع بعض على اليمين -->
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">The Egoist</a></li>
+                <li><a href="#footer">About</a></li>
+            </ul>
+
+            <!-- أيقونة فتح القائمة الجانبية -->
+            <div class="menu-btn" id="menu-btn">
+                <svg viewBox="0 0 24 24" width="35" height="35" fill="white">
+                    <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/>
+                </svg>
+            </div>
+        </div>
+    </nav>
+
+    <!-- القائمة الجانبية المخفية (Sidebar) -->
+    <div id="sidebar" class="sidebar">
+        <div class="close-btn" id="close-btn">&times;</div>
+        <ul class="sidebar-links">
+            <li><a href="shirts.html" target="_blank">Football Shirts</a></li>
+            <li><a href="boots.html" target="_blank">Football Boots</a></li>
+        </ul>
+    </div>
+
+    <!-- بطل الصفحة (Hero Section) -->
+    <section id="hero">
+        <video class="video-bg" autoplay loop muted playsinline>
+            <source src="main videos/rin-itoshi-bluelock.3840x2160.mp4" type="video/mp4">
+        </video>
+        <div class="overlay"></div>
+        
+        <!-- الكلام اللي في نص الشاشة -->
+        <div class="hero-content">
+            <h1>Just Do It</h1>
+            <h2>Your <span>Ego</span> Powered by Nike </h2>
+            <!-- زرار Explore Collection اللي بيفتح القائمة -->
+            <a href="#" id="explore-btn" class="btn">Explore Collection</a>
+        </div>
+    </section>
+
+    <!-- قسم المحتوى اللي تحت الفيديو (The Egoist) -->
+    <section id="about" class="content-section">
+        <div class="container reveal">
+            <h3 class="section-title">FORGE YOUR EGO</h3>
+            <p>True victory belongs to those who crave it the most. Nike is built for the obsessed. Engineered for the players who refuse to be second best. Period.</p>
+        </div>
+        
+        <div class="container reveal">
+            <h3 class="section-title">BE THE BEST STRIKER</h3>
+            <p>Precision. Speed. Pure Ego. Don't just play the game—own it. Every innovation in our gear is designed to make your next strike absolutely devastating With Nike.</p>
+        </div>
+    </section>
+
+    <!-- تذييل الصفحة (About / Footer) -->
+    <footer id="footer" class="footer-section">
+        <div class="footer-content reveal">
+            <div class="footer-logo">
+                <svg viewBox="0 0 24 24" width="40" height="25" fill="white">
+                    <path d="M24 7.8L9.04 15.6c-2.32 1.31-4.7 1.77-7.23.95C.13 15.44-1.14 13.9.79 10.98c.45-.69 1-1.34 1.58-1.95.83-.87 1.62-1.78 2.45-2.65-.63.95-1.14 1.95-1.6 2.97-.47 1.05-.62 2.1-.2 3.1.53 1.25 1.77 1.74 3.07 1.48 1.98-.38 3.86-1.15 5.6-2.07l12.31-7.06z"/>
+                </svg>
+                <span>NIKE x BLUE LOCK</span>
+            </div>
+            <p>This project is a concept blending the fierce ego of Blue Lock with the performance engineering of Nike. Designed for strikers who refuse to be ordinary.</p>
+            
+            <div class="social-links">
+                <a href="https://www.instagram.com/nike/" target="_blank">Instagram</a>
+                <a href="https://twitter.com/Nike" target="_blank">Twitter</a>
+                <a href="https://www.youtube.com/@nike" target="_blank">YouTube</a>
+            </div>
+
+            <p class="copyright">&copy; 2026 Nike x Blue Lock Concept. Built for the Egoist.</p>
+        </div>
+    </footer>
+
+    <script src="js/active.js"></script>
+</body>
+</html>

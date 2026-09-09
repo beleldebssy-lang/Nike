@@ -1,0 +1,1 @@
+console.log("Shirts page JS is ready and connected!");
