@@ -372,7 +372,7 @@ body {
 }
 
 /* =========================================
-   قسم اختر سلاحك (Choose Your Weapon) - بالصور
+   قسم اختر سلاحك (Choose Your Weapon)
    ========================================= */
 .categories-section {
     padding-top: 20px;
@@ -452,7 +452,7 @@ body {
     background: radial-gradient(circle, rgba(0, 102, 255, 0.15) 0%, transparent 60%);
 }
 
-/* لون أخضر فاقع لكارت الأحذية عشان يليق مع الكوتشي الأخضر */
+/* لون أخضر فاقع لكارت الأحذية */
 .category-card.rin-card::before {
     background: radial-gradient(circle, rgba(0, 255, 0, 0.12) 0%, transparent 60%);
 }
@@ -481,12 +481,11 @@ body {
     margin-bottom: 0;
 }
 
-/* تأثير الـ Hover لما الماوس ييجي على الكارت */
+/* تأثير الـ Hover */
 .category-card:hover {
     transform: translateY(-15px);
 }
 
-/* حركة الصورة (التيشيرت / الكوتشي) لما تقف بالماوس */
 .category-card:hover .card-image {
     transform: translate(-50%, -45%) scale(1.15) rotate(-3deg);
 }
@@ -606,12 +605,14 @@ body {
         text-align: center;
         gap: 40px;
     }
-    .text-left, .split-reverse .text-left {
-        text-align: center; 
-    }
+    .text-left, .split-reverse .text-left { text-align: center; }
     .character-img { max-height: 400px; }
     .cards-container { flex-direction: column; }
-    .category-card { height: 350px; }
+    
+    .category-card {
+        min-height: 350px !important;
+        height: auto;
+    }
 }
  
 @media (max-width: 480px) {
@@ -641,27 +642,36 @@ body {
     .footer-content p { font-size: 0.9rem; }
     
     /* =========================================================
-       التعديل الإجباري للكروت في الموبايل عشان الصور تبان قوية
+       التعديل النهائي والإجباري للكروت عشان تفرد على الموبايل
        ========================================================= */
     .category-card {
-        height: 280px !important; /* إجبار الموبايل يكبر الكارت */
-        padding: 20px !important;
+        min-height: 300px !important; /* إجبار الموبايل يخلي الكارت طويل */
+        height: 300px !important;
+        padding: 25px 20px !important;
         justify-content: flex-end !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
     }
     
     .card-image {
-        top: 35% !important; /* زق الصورة لفوق عشان تبعد عن الكلام */
-        height: 55% !important; /* تكبير الصورة جداً */
-        max-width: 85% !important; 
+        position: absolute !important;
+        top: 40% !important; /* زق الصورة لفوق */
+        height: 55% !important; 
+        width: 85% !important; /* عرض أكبر عشان تبان واضحة */
+        max-width: 220px !important; 
+        object-fit: contain !important;
     }
 
     .card-text {
-        margin-top: auto;
+        position: relative !important;
+        z-index: 2 !important;
+        margin-top: auto !important; /* يزق الكلام لتحت خالص */
     }
 
     .category-card h4 {
-        font-size: 1.3rem !important;
-        margin-bottom: 5px;
+        font-size: 1.4rem !important;
+        margin-bottom: 5px !important;
     }
     
     .category-card p {
