@@ -425,7 +425,8 @@ body {
     top: 40%; 
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%;
+    width: auto;
+    max-width: 80%;
     height: 55%; 
     object-fit: contain;
     z-index: 1;
@@ -594,26 +595,12 @@ body {
    استجابة الموقع للشاشات المتوسطة والموبايل
    ========================================================= */
 @media (max-width: 900px) {
-    .hero-content h1 {
-        font-size: 3.4rem;
-        letter-spacing: 2px;
-    }
-    .hero-content h2 {
-        font-size: 1.6rem;
-        letter-spacing: 1px;
-        margin-bottom: 32px;
-    }
-    .section-title {
-        font-size: 1.9rem;
-    }
-    .content-section {
-        padding: 90px 20px;
-    }
-    .content-section p, .text-content p {
-        font-size: 1.05rem;
-    }
+    .hero-content h1 { font-size: 3.4rem; letter-spacing: 2px; }
+    .hero-content h2 { font-size: 1.6rem; letter-spacing: 1px; margin-bottom: 32px; }
+    .section-title { font-size: 1.9rem; }
+    .content-section { padding: 90px 20px; }
+    .content-section p, .text-content p { font-size: 1.05rem; }
     
-    /* تعديل القسم المنفصل للموبايل والتابلت (الصورة تطلع فوق) */
     .split-container, .split-reverse {
         flex-direction: column-reverse;
         text-align: center;
@@ -622,148 +609,79 @@ body {
     .text-left, .split-reverse .text-left {
         text-align: center; 
     }
-    .character-img {
-        max-height: 400px; 
-    }
-
-    /* تعديل الكروت للموبايل والشاشات المتوسطة */
-    .cards-container {
-        flex-direction: column;
-    }
-    .category-card {
-        height: 350px;
-    }
+    .character-img { max-height: 400px; }
+    .cards-container { flex-direction: column; }
+    .category-card { height: 350px; }
 }
  
 @media (max-width: 480px) {
-    #navbar {
-        padding: 14px 16px;
-        flex-wrap: wrap;
-        row-gap: 10px;
-    }
-    #navbar.scrolled {
-        padding: 10px 16px;
-    }
-    .logo {
-        font-size: 17px;
-        gap: 6px;
-    }
-    .logo svg {
-        width: 42px;
-        height: 25px;
-    }
-    .nav-right {
-        gap: 14px;
-    }
-    .nav-links {
-        gap: 12px;
-    }
-    .nav-links a {
-        font-size: 10px;
-        letter-spacing: 0.5px;
-    }
-    .menu-btn svg {
-        width: 26px;
-        height: 26px;
-    }
+    #navbar { padding: 14px 16px; flex-wrap: wrap; row-gap: 10px; }
+    #navbar.scrolled { padding: 10px 16px; }
+    .logo { font-size: 17px; gap: 6px; }
+    .logo svg { width: 42px; height: 25px; }
+    .nav-right { gap: 14px; }
+    .nav-links { gap: 12px; }
+    .nav-links a { font-size: 10px; letter-spacing: 0.5px; }
+    .menu-btn svg { width: 26px; height: 26px; }
  
-    .hero-content h1 {
-        font-size: 2.2rem;
-        letter-spacing: 1px;
-        margin-bottom: 8px;
-    }
-    .hero-content h2 {
-        font-size: 1.1rem;
-        letter-spacing: 0.5px;
-        margin-bottom: 28px;
-    }
-    .btn {
-        padding: 12px 26px;
-        font-size: 0.95rem;
-        letter-spacing: 1px;
-    }
+    .hero-content h1 { font-size: 2.2rem; letter-spacing: 1px; margin-bottom: 8px; }
+    .hero-content h2 { font-size: 1.1rem; letter-spacing: 0.5px; margin-bottom: 28px; }
+    .btn { padding: 12px 26px; font-size: 0.95rem; letter-spacing: 1px; }
  
-    .content-section {
-        padding: 60px 18px;
-    }
-    .section-title {
-        font-size: 1.5rem;
-    }
-    .content-section p, .text-content p {
-        font-size: 0.95rem;
-        line-height: 1.7;
-    }
+    .content-section { padding: 60px 18px; }
+    .section-title { font-size: 1.5rem; }
+    .content-section p, .text-content p { font-size: 0.95rem; line-height: 1.7; }
  
-    .sidebar {
-        width: 82%;
-        max-width: 300px;
-        padding: 30px 25px;
-    }
-    .close-btn {
-        font-size: 36px;
-        margin-bottom: 35px;
-    }
-    .sidebar-links {
-        gap: 20px;
-    }
-    .sidebar-links a {
-        font-size: 1.1rem;
-        letter-spacing: 2px;
-        padding-bottom: 12px;
-    }
+    .sidebar { width: 82%; max-width: 300px; padding: 30px 25px; }
+    .close-btn { font-size: 36px; margin-bottom: 35px; }
+    .sidebar-links { gap: 20px; }
+    .sidebar-links a { font-size: 1.1rem; letter-spacing: 2px; padding-bottom: 12px; }
  
-    .footer-logo {
-        font-size: 16px;
-    }
-    .footer-content p {
-        font-size: 0.9rem;
-    }
+    .footer-logo { font-size: 16px; }
+    .footer-content p { font-size: 0.9rem; }
     
-    /* التعديل الجذري للكروت في الموبايل عشان الصور تبان واضحة */
+    /* =========================================================
+       التعديل الإجباري للكروت في الموبايل عشان الصور تبان قوية
+       ========================================================= */
     .category-card {
-        height: 300px; 
-        padding: 20px;
+        height: 280px !important; /* إجبار الموبايل يكبر الكارت */
+        padding: 20px !important;
+        justify-content: flex-end !important;
     }
     
     .card-image {
-        top: 38%; /* رفعنا الصورة فوق الكلام */
-        height: 60%; 
-        width: 90%; /* عرض أكبر في الموبايل */
+        top: 35% !important; /* زق الصورة لفوق عشان تبعد عن الكلام */
+        height: 55% !important; /* تكبير الصورة جداً */
+        max-width: 85% !important; 
+    }
+
+    .card-text {
+        margin-top: auto;
     }
 
     .category-card h4 {
-        font-size: 1.4rem;
+        font-size: 1.3rem !important;
         margin-bottom: 5px;
     }
     
     .category-card p {
-        font-size: 0.85rem;
+        font-size: 0.85rem !important;
     }
 }
  
 /* أجهزة صغيرة جدًا (٣٦٠ بكسل وأقل) */
 @media (max-width: 360px) {
-    .hero-content h1 {
-        font-size: 1.9rem;
-    }
-    .hero-content h2 {
-        font-size: 0.95rem;
-    }
-    .nav-links a {
-        font-size: 9px;
-    }
+    .hero-content h1 { font-size: 1.9rem; }
+    .hero-content h2 { font-size: 0.95rem; }
+    .nav-links a { font-size: 9px; }
 }
  
 /* =========================================================
    تعديل موضع الفيديو والصورة البديلة على الشاشات الضيقة
    ========================================================= */
 @media (max-width: 768px) {
-    .video-bg {
-        object-position: 78% center;
-    }
-    #hero {
-        background-position: 78% center; 
-    }
+    .video-bg { object-position: 78% center; }
+    #hero { background-position: 78% center; }
 }
 
 /* =========================================================
@@ -779,6 +697,4 @@ video::-webkit-media-controls-play-button {
     opacity: 0 !important;
 }
 
-video {
-    pointer-events: none !important;
-}
+video { pointer-events: none !important; }
