@@ -17,15 +17,12 @@
             NIKE
         </div>
         
-        <!-- الصندوق اللي بيجمع اللينكات والزرار مع بعض على اليمين -->
         <div class="nav-right">
             <ul class="nav-links">
                 <li><a href="#hero">Home</a></li>
                 <li><a href="#about">The Egoist</a></li>
                 <li><a href="#footer">About</a></li>
             </ul>
-
-            <!-- أيقونة فتح القائمة الجانبية -->
             <div class="menu-btn" id="menu-btn">
                 <svg viewBox="0 0 24 24" width="35" height="35" fill="white">
                     <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/>
@@ -34,7 +31,7 @@
         </div>
     </nav>
 
-    <!-- القائمة الجانبية المخفية (Sidebar) -->
+    <!-- القائمة الجانبية المخفية -->
     <div id="sidebar" class="sidebar">
         <div class="close-btn" id="close-btn">&times;</div>
         <ul class="sidebar-links">
@@ -43,15 +40,12 @@
         </ul>
     </div>
 
-    <!-- بطل الصفحة (Hero Section) -->
+    <!-- بطل الصفحة -->
     <section id="hero">
         <video class="video-bg" autoplay loop muted playsinline webkit-playsinline poster="main photos/rin-poster.png" preload="auto">
             <source src="main videos/rin-itoshi-bluelock.3840x2160.mp4" type="video/mp4">
-            Your browser does not support the video tag.
         </video>
         <div class="overlay"></div>
-        
-        <!-- الكلام اللي في نص الشاشة -->
         <div class="hero-content">
             <h1>Just Do It</h1>
             <h2>Your <span>Ego</span> Powered by Nike </h2>
@@ -59,10 +53,10 @@
         </div>
     </section>
 
-    <!-- قسم المحتوى اللي تحت الفيديو (The Egoist) -->
+    <!-- المحتوى -->
     <section id="about" class="content-section">
         
-        <!-- السكشن الأول: إيساجي (الصورة يمين والكلام شمال) -->
+        <!-- إيساجي -->
         <div class="split-container reveal">
             <div class="text-content">
                 <h3 class="section-title text-left">FORGE YOUR EGO</h3>
@@ -73,7 +67,7 @@
             </div>
         </div>
         
-        <!-- السكشن التاني: ناجي (الصورة شمال والكلام يمين) -->
+        <!-- ناجي -->
         <div class="split-container split-reverse reveal">
             <div class="text-content">
                 <h3 class="section-title text-left">BE THE BEST STRIKER</h3>
@@ -84,13 +78,11 @@
             </div>
         </div>
 
-        <!-- السكشن الثالث: اختر سلاحك (CHOOSE YOUR WEAPON) -->
+        <!-- الكروت -->
         <div class="categories-section reveal">
             <h3 class="section-title text-center">CHOOSE YOUR WEAPON</h3>
             <p class="section-subtitle text-center">Gear up. Evolve. Devour the pitch.</p>
-            
             <div class="cards-container">
-                <!-- كارت التيشيرتات -->
                 <a href="shirts.html" class="category-card isagi-card">
                     <img src="main photos/NikeMen_sStockFlagFootballJersey_13.webp" alt="Football Shirt" class="card-image">
                     <div class="card-text">
@@ -98,8 +90,6 @@
                         <p>The Armor of the Egoist</p>
                     </div>
                 </a>
-                
-                <!-- كارت الأحذية -->
                 <a href="boots.html" class="category-card rin-card">
                     <img src="main photos/images_boots-removebg-preview.png" alt="Football Boots" class="card-image">
                     <div class="card-text">
@@ -109,10 +99,19 @@
                 </a>
             </div>
         </div>
+        
+        <!-- سيكشن المطور (الجديد) -->
+        <div class="developer-teaser reveal">
+            <h3 class="section-title text-center">BEHIND THE EGO</h3>
+            <p class="section-subtitle text-center">Meet the mastermind who engineered this pitch.</p>
+            <div class="text-center" style="margin-top: 30px;">
+                <a href="me.html" class="btn">MEET THE DEVELOPER</a>
+            </div>
+        </div>
 
     </section>
 
-    <!-- تذييل الصفحة (About / Footer) -->
+    <!-- الفوتر -->
     <footer id="footer" class="footer-section">
         <div class="footer-content reveal">
             <div class="footer-logo">
@@ -122,13 +121,11 @@
                 <span>NIKE x BLUE LOCK</span>
             </div>
             <p>This project is a concept blending the fierce ego of Blue Lock with the performance engineering of Nike. Designed for strikers who refuse to be ordinary.</p>
-            
             <div class="social-links">
                 <a href="https://www.instagram.com/nike/" target="_blank">Instagram</a>
                 <a href="https://twitter.com/Nike" target="_blank">Twitter</a>
                 <a href="https://www.youtube.com/@nike" target="_blank">YouTube</a>
             </div>
-
             <p class="copyright">&copy; 2026 Nike x Blue Lock Concept. Built for the Egoist.</p>
         </div>
     </footer>
