@@ -187,6 +187,59 @@ body {
     transform: scale(1.05);
 }
 
+/* =========================================================
+   🔥 Rin's Egoist Flame Aura (نار العين والهالة الخضراء) 🔥
+   ========================================================= */
+
+/* 1. هالة الجسم (نبض أخضر خلف الصورة) */
+.rin-aura-bg {
+    position: absolute;
+    top: -20%; left: -20%; width: 140%; height: 140%;
+    background: radial-gradient(circle, rgba(0, 255, 170, 0.4) 0%, transparent 65%);
+    z-index: 1; /* ورا صورتك */
+    animation: aura-pulse 2s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    mix-blend-mode: screen; /* بيدي لمعة قوية مع الأسود */
+}
+
+/* 2. شرارة العين الخضراء (اللي طالعة من العين) */
+
+
+/* الشعلة اللي مسحوبة لورا كأنك بتتحرك بسرعة */
+
+
+/* 3. تأثير إضاءة خفيفة على صورتك نفسها (عشان تبان النار مأثرة ع الوش) */
+.dev-img-flicker {
+    animation: image-glow 0.2s infinite alternate;
+}
+
+/* الأنيميشنز الخاصة بالنار */
+@keyframes aura-pulse {
+    0% { transform: scale(0.9); opacity: 0.5; }
+    100% { transform: scale(1.1); opacity: 0.9; }
+}
+
+@keyframes eye-core-flicker {
+    0% { transform: scale(0.8); opacity: 0.8; }
+    100% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 15px #fff, 0 0 30px #00ffaa, 0 0 60px #00ffaa; }
+}
+
+@keyframes flame-trail-flicker {
+    0% { 
+        opacity: 0.5; 
+        transform: translate(-50%, -50%) rotate(-30deg) translateX(35px) scaleX(0.8) scaleY(0.9); 
+    }
+    100% { 
+        opacity: 0.9; 
+        transform: translate(-50%, -50%) rotate(-30deg) translateX(45px) scaleX(1.3) scaleY(1.1); 
+    }
+}
+
+@keyframes image-glow {
+    0% { filter: drop-shadow(0 0 10px rgba(0, 255, 170, 0.2)); }
+    100% { filter: drop-shadow(0 0 25px rgba(0, 255, 170, 0.5)); }
+}
+
 /* =========================================
    الأنيميشن
    ========================================= */
@@ -224,4 +277,7 @@ body {
     
     .image-card { max-width: 300px; aspect-ratio: 4 / 5; }
     .linkedin-btn { width: 100%; justify-content: center; }
+
+    /* تعديل مكان العين عشان تظبط مع الموبايل */
+    
 }
