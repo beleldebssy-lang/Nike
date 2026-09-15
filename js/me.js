@@ -54,3 +54,39 @@ if (closeBtn && sidebar) {
         sidebar.classList.remove('active');
     });
 }
+
+// ==========================================
+// 4. التفاعل مع حركة الماوس (Interactive Eye Flare & Card)
+// ==========================================
+const imageCard = document.querySelector('.image-card');
+const eyeFlare = document.querySelector('.eye-flare');
+
+if (imageCard && eyeFlare) {
+    imageCard.addEventListener('mousemove', (e) => {
+        // حساب مكان الماوس بالنسبة للكارت
+        const cardRect = imageCard.getBoundingClientRect();
+        const x = e.clientX - cardRect.left;
+        const y = e.clientY - cardRect.top;
+        
+        // حساب المركز بتاع الكارت
+        const centerX = cardRect.width / 2;
+        const centerY = cardRect.height / 2;
+        
+        // حساب الحركة بناءً على بعد الماوس عن المركز
+        // الأرقام دي بتحدد مدى استجابة وحركة النار والصورة
+        const moveX = (x - centerX) / 15;
+        const moveY = (y - centerY) / 15;
+        
+        // تحريك الكارت نفسه حركة 3D بسيطة
+        imageCard.style.transform = `translateY(-15px) rotateX(${-moveY}deg) rotateY(${moveX}deg)`;
+        
+        // تحريك النار عكس حركة الكارت عشان تبان بارزة وتفاعلية
+        eyeFlare.style.transform = `translate(${-moveX * 1.5}px, ${-moveY * 1.5}px)`;
+    });
+    
+    // إرجاع كل حاجة لمكانها لما الماوس يخرج بره الكارت
+    imageCard.addEventListener('mouseleave', () => {
+        imageCard.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
+        eyeFlare.style.transform = 'translate(0, 0)';
+    });
+}
