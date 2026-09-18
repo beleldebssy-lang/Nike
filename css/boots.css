@@ -333,7 +333,52 @@ body {
 }
 
 /* =========================================
-   الفوتر وتوافق الموبايل
+   ألوان الخطوط في الهوفر 
+   ========================================= */
+.boot-card-1:hover .boot-name { color: #00e5ff; }
+.boot-card-1:hover { border-color: rgba(0, 229, 255, 0.4); }
+.boot-card-1:hover .buy-btn { border-color: #00e5ff; color: var(--text-main); }
+.boot-card-1:hover .buy-btn::before { background-color: #00e5ff; }
+.boot-card-1:hover .buy-btn:hover { color: #000; box-shadow: 0 0 15px #00e5ff; }
+.boot-card-1:hover .price { color: #00e5ff; }
+
+.boot-card-2:hover .boot-name { color: #ffffff; }
+.boot-card-2:hover { border-color: rgba(255, 255, 255, 0.4); }
+.boot-card-2:hover .buy-btn { border-color: #ffffff; color: var(--text-main); }
+.boot-card-2:hover .buy-btn::before { background-color: #ffffff; }
+.boot-card-2:hover .buy-btn:hover { color: #000; box-shadow: 0 0 15px #ffffff; }
+.boot-card-2:hover .price { color: #ffffff; }
+
+.boot-card-3:hover .boot-name { color: #ff0055; }
+.boot-card-3:hover { border-color: rgba(255, 0, 85, 0.4); }
+.boot-card-3:hover .buy-btn { border-color: #ff0055; color: var(--text-main); }
+.boot-card-3:hover .buy-btn::before { background-color: #ff0055; }
+.boot-card-3:hover .buy-btn:hover { color: #000; box-shadow: 0 0 15px #ff0055; }
+.boot-card-3:hover .price { color: #ff0055; }
+
+.boot-card-4:hover .boot-name { color: #ffee00; }
+.boot-card-4:hover { border-color: rgba(255, 238, 0, 0.4); }
+.boot-card-4:hover .buy-btn { border-color: #ffee00; color: var(--text-main); }
+.boot-card-4:hover .buy-btn::before { background-color: #ffee00; }
+.boot-card-4:hover .buy-btn:hover { color: #000; box-shadow: 0 0 15px #ffee00; }
+.boot-card-4:hover .price { color: #ffee00; }
+
+.boot-card-5:hover .boot-name { color: #ff0080; }
+.boot-card-5:hover { border-color: rgba(255, 0, 128, 0.4); }
+.boot-card-5:hover .buy-btn { border-color: #ff0080; color: var(--text-main); }
+.boot-card-5:hover .buy-btn::before { background-color: #ff0080; }
+.boot-card-5:hover .buy-btn:hover { color: #000; box-shadow: 0 0 15px #ff0080; }
+.boot-card-5:hover .price { color: #ff0080; }
+
+.boot-card-6:hover .boot-name { color: #ffb700; }
+.boot-card-6:hover { border-color: rgba(255, 183, 0, 0.4); }
+.boot-card-6:hover .buy-btn { border-color: #ffb700; color: var(--text-main); }
+.boot-card-6:hover .buy-btn::before { background-color: #ffb700; }
+.boot-card-6:hover .buy-btn:hover { color: #000; box-shadow: 0 0 15px #ffb700; }
+.boot-card-6:hover .price { color: #ffb700; }
+
+/* =========================================
+   تصميم الفوتر (Footer)
    ========================================= */
 #boots-footer {
     position: relative;
@@ -380,17 +425,13 @@ body {
 /* أيقونة السلة (Cart) */
 .cart-btn { position: relative; cursor: pointer; display: flex; align-items: center; transition: transform 0.3s ease; margin-right: 10px; }
 .cart-btn:hover { transform: scale(1.1); }
-.cart-btn:hover svg { fill: #00e5ff; }
+.cart-btn:hover svg { fill: #00e5ff; transition: fill 0.5s ease; }
 .cart-badge { position: absolute; top: -5px; right: -8px; background-color: #00e5ff; color: #000; font-size: 12px; font-weight: bold; padding: 2px 6px; border-radius: 50%; border: 2px solid #050505; display: flex; align-items: center; justify-content: center; min-width: 20px; height: 20px; transition: border-color 0.5s ease; }
 
 @media (hover: none), (pointer: coarse) {
     .price { opacity: 1; }
-    .buy-btn {
-        opacity: 1;
-        position: static;
-        transform: none;
-        margin-top: 12px;
-    }
+    .buy-btn { opacity: 1; position: static; transform: none; margin-top: 12px; }
+    .boot-img { transform: rotate(0deg); } 
 }
 
 @media (max-width: 900px) {
@@ -398,23 +439,36 @@ body {
 }
 
 @media (max-width: 480px) {
-    #navbar { padding: 15px 20px; }
-    .logo { font-size: 16px; }
-    .back-btn { font-size: 0.8rem; padding: 6px 12px; }
+    /* تظبيط الناف بار للموبايل */
+    #navbar { padding: 12px 10px; flex-wrap: nowrap; }
+    .logo { font-size: 14px; gap: 4px; }
+    .logo svg { width: 28px; height: 16px; }
+    .nav-right { gap: 8px; align-items: center; }
     
-    .products-grid {
-        margin: 150px auto 60px;
-        gap: 70px 20px;
-        width: 92%;
+    /* حل مشكلة زرار الرجوع */
+    .back-btn { 
+        font-size: 0.6rem; 
+        padding: 5px 8px; 
+        letter-spacing: 0; 
+        white-space: nowrap; /* بيمنع الكلمة تنزل على سطرين */
+        border-width: 1px;
     }
-    .product-card { height: 350px; padding: 15px; }
-    .boot-img { bottom: 130px; max-width: 280px; }
-    .boot-name { font-size: 1.1rem; }
+    
+    /* تصغير الأيقونات عشان تكفي */
+    .theme-btn { margin-right: 0 !important; }
+    .theme-btn svg { width: 22px; height: 22px; }
+    .cart-btn { margin-right: 0; }
+    .cart-btn svg { width: 24px; height: 24px; }
+    .cart-badge { top: -2px; right: -6px; transform: scale(0.85); }
+
+    .products-grid { margin: 150px auto 60px; gap: 70px 20px; width: 92%; }
+    .product-card { height: 380px; padding: 15px; }
+    .boot-img { bottom: 120px; max-height: 220px; transform: rotate(0deg); } /* تصغير الجزمة في الموبايل وتعديل زاويتها */
+    .boot-name { font-size: 1.2rem; }
     .edition { font-size: 0.8rem; }
     .price { font-size: 1rem; }
     .buy-btn { padding: 8px 20px; font-size: 0.85rem; }
     .cart-sidebar { width: 100%; right: -100%; }
-    .nav-right { gap: 15px; }
 }
 
 /* =========================================================
