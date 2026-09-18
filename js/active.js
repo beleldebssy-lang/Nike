@@ -38,15 +38,10 @@ document.addEventListener('click', function(event) {
     const menuBtn = document.getElementById('menu-btn');
     const exploreBtn = document.getElementById('explore-btn');
 
-    // لو القائمة الجانبية موجودة ومفتوحة (واخدة كلاس active)
     if (sidebar && sidebar.classList.contains('active')) {
-        
-        // لو الضغطة مكانتش جوه القائمة نفسها، ومكانتش على زرار المنيو، ومكانتش على زرار Explore
         if (!sidebar.contains(event.target) && 
             (!menuBtn || !menuBtn.contains(event.target)) && 
             (!exploreBtn || !exploreBtn.contains(event.target))) {
-            
-            // اقفل القائمة فوراً
             sidebar.classList.remove('active');
         }
     }
@@ -60,7 +55,7 @@ function revealElements() {
     for (let i = 0; i < reveals.length; i++) {
         const windowHeight = window.innerHeight;
         const elementTop = reveals[i].getBoundingClientRect().top;
-        const elementVisible = 50; // المسافة اللي بيبدأ عندها الظهور
+        const elementVisible = 50; 
 
         if (elementTop < windowHeight - elementVisible) {
             reveals[i].classList.add('active');
@@ -73,11 +68,8 @@ document.addEventListener('DOMContentLoaded', revealElements);
 // ==========================================
 // 4. برمجة سلة المشتريات (Shopping Cart)
 // ==========================================
-
-// استدعاء المنتجات من التخزين المحلي (عشان متطيرش لو عمل ريفريش)
 let cart = JSON.parse(localStorage.getItem('nike_bluelock_cart')) || [];
 
-// دالة فتح وقفل السلة
 function toggleCart() {
     const cartSidebar = document.getElementById('cart-sidebar');
     const cartOverlay = document.getElementById('cart-overlay');
@@ -88,45 +80,33 @@ function toggleCart() {
     }
 }
 
-// دالة إضافة منتج للسلة (هتستخدمها في زراير الشراء)
 window.addToCart = function(itemName, itemPrice, itemImg) {
-    // إضافة المنتج للمصفوفة
     cart.push({ name: itemName, price: parseFloat(itemPrice), image: itemImg });
-    
-    // حفظ السلة في التخزين المحلي
     localStorage.setItem('nike_bluelock_cart', JSON.stringify(cart));
-    
-    // تحديث شكل السلة
     updateCartUI();
     
-    // فتح السلة أوتوماتيك عشان العميل يتأكد إنها اتضافت
     const cartSidebar = document.getElementById('cart-sidebar');
     if (cartSidebar && !cartSidebar.classList.contains('active')) {
         toggleCart();
     }
 }
 
-// دالة مسح منتج من السلة
 window.removeFromCart = function(index) {
     cart.splice(index, 1);
     localStorage.setItem('nike_bluelock_cart', JSON.stringify(cart));
     updateCartUI();
 }
 
-// دالة تحديث شكل السلة والأرقام (العداد والمجموع)
 function updateCartUI() {
     const cartItemsContainer = document.getElementById('cart-items');
     const cartBadge = document.getElementById('cart-badge');
     const cartTotalPrice = document.getElementById('cart-total-price');
     
-    // التأكد إن العناصر موجودة في الصفحة قبل التعديل
     if (!cartItemsContainer || !cartBadge || !cartTotalPrice) return;
 
-    // تفريغ السلة عشان نرسمها من جديد
     cartItemsContainer.innerHTML = '';
     let total = 0;
 
-    // لو السلة فاضية
     if (cart.length === 0) {
         cartItemsContainer.innerHTML = '<p class="empty-cart-msg">Your cart is empty. Time to gear up!</p>';
         cartBadge.innerText = '0';
@@ -134,7 +114,6 @@ function updateCartUI() {
         return;
     }
 
-    // رسم المنتجات جوه السلة
     cart.forEach((item, index) => {
         total += item.price;
         
@@ -151,10 +130,51 @@ function updateCartUI() {
         cartItemsContainer.innerHTML += cartItemHTML;
     });
 
-    // تحديث الأرقام النهائية
     cartBadge.innerText = cart.length;
     cartTotalPrice.innerText = '$' + total.toFixed(2);
 }
 
-// تشغيل تحديث السلة أول ما الصفحة تفتح
 document.addEventListener('DOMContentLoaded', updateCartUI);
+
+// ==========================================
+// 5. التبديل بين الوضع النهاري والليلي (Light/Dark Mode)
+// ==========================================
+function toggleTheme() {
+    const body = document.body;
+    const sunIcon = document.querySelector('.sun-icon');
+    const moonIcon = document.querySelector('.moon-icon');
+    
+    body.classList.toggle('light-mode');
+    
+    if (body.classList.contains('light-mode')) {
+        localStorage.setItem('theme', 'light');
+        // في اللايت مود: إظهار الشمس وإخفاء القمر
+        if(sunIcon) sunIcon.style.display = 'block';
+        if(moonIcon) moonIcon.style.display = 'none';
+    } else {
+        localStorage.setItem('theme', 'dark');
+        // في الدارك مود: إظهار القمر وإخفاء الشمس
+        if(sunIcon) sunIcon.style.display = 'none';
+        if(moonIcon) moonIcon.style.display = 'block';
+    }
+}
+
+// الكشف عن الثيم المحفوظ عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    const body = document.body;
+    const sunIcon = document.querySelector('.sun-icon');
+    const moonIcon = document.querySelector('.moon-icon');
+
+    if (savedTheme === 'light') {
+        body.classList.add('light-mode');
+        // لو مسجل لايت مود: إظهار الشمس وإخفاء القمر
+        if(sunIcon) sunIcon.style.display = 'block';
+        if(moonIcon) moonIcon.style.display = 'none';
+    } else {
+        body.classList.remove('light-mode');
+        // لو مسجل دارك مود: إظهار القمر وإخفاء الشمس
+        if(sunIcon) sunIcon.style.display = 'none';
+        if(moonIcon) moonIcon.style.display = 'block';
+    }
+});
