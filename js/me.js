@@ -53,3 +53,42 @@ if (imageCard) {
         imageCard.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
     });
 }
+
+// ==========================================
+// 4. التبديل بين الوضع النهاري والليلي (Light/Dark Mode)
+// ==========================================
+function toggleTheme() {
+    const body = document.body;
+    const sunIcon = document.querySelector('.sun-icon');
+    const moonIcon = document.querySelector('.moon-icon');
+    
+    body.classList.toggle('light-mode');
+    
+    if (body.classList.contains('light-mode')) {
+        localStorage.setItem('theme', 'light');
+        if(sunIcon) sunIcon.style.display = 'block';
+        if(moonIcon) moonIcon.style.display = 'none';
+    } else {
+        localStorage.setItem('theme', 'dark');
+        if(sunIcon) sunIcon.style.display = 'none';
+        if(moonIcon) moonIcon.style.display = 'block';
+    }
+}
+
+// الكشف عن الثيم عند التحميل عشان يفضل ثابت زي ما اليوزر اختار
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    const body = document.body;
+    const sunIcon = document.querySelector('.sun-icon');
+    const moonIcon = document.querySelector('.moon-icon');
+
+    if (savedTheme === 'light') {
+        body.classList.add('light-mode');
+        if(sunIcon) sunIcon.style.display = 'block';
+        if(moonIcon) moonIcon.style.display = 'none';
+    } else {
+        body.classList.remove('light-mode');
+        if(sunIcon) sunIcon.style.display = 'none';
+        if(moonIcon) moonIcon.style.display = 'block';
+    }
+});
