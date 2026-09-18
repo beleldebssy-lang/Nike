@@ -363,3 +363,20 @@ body.light-mode .image-card {
     border-color: rgba(0,0,0,0.1);
     background: var(--bg-card);
 }
+
+/* =========================================================
+   إخفاء زرار الـ Play الإجباري بتاع الموبايل من على الفيديو
+   ========================================================= */
+video::-webkit-media-controls,
+video::-webkit-media-controls-enclosure,
+video::-webkit-media-controls-overlay-play-button,
+video::-webkit-media-controls-start-playback-button,
+video::-webkit-media-controls-play-button {
+    display: none !important;
+    -webkit-appearance: none !important;
+    opacity: 0 !important;
+}
+
+video {
+    pointer-events: none !important; /* بيمنع اليوزر إنه يضغط على الفيديو أصلاً */
+}
