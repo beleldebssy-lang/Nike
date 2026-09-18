@@ -160,8 +160,12 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0, 15, 30, 0.7) 100%);
+    /* دمجنا التظليل العادي مع تدرج من تحت بياخد لون خلفية الموقع (سواء دارك أو لايت) */
+    background: 
+        linear-gradient(to bottom, transparent 65%, var(--bg-main) 100%),
+        linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0, 15, 30, 0.7) 100%);
     z-index: -1;
+    transition: background 0.5s ease;
 }
  
 .hero-content {
