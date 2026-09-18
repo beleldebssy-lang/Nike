@@ -1,3 +1,30 @@
+/* =========================================
+   متغيرات الألوان (Color Variables) للوضع الليلي والنهاري
+   ========================================= */
+:root {
+    --bg-main: #050505;
+    --bg-navbar-scrolled: rgba(5, 5, 5, 0.95);
+    --bg-card: #0a0a0a;
+    
+    --text-main: #f5f5f5;
+    --text-muted: #e0e0e0;
+    
+    --accent-color: #00ffaa;
+    --logo-fill: white;
+}
+
+body.light-mode {
+    --bg-main: #f4f4f9;
+    --bg-navbar-scrolled: rgba(255, 255, 255, 0.95);
+    --bg-card: #ffffff;
+    
+    --text-main: #111111;
+    --text-muted: #444444;
+    
+    --accent-color: #00b377; /* أخضر أغمق شوية عشان يبان على الأبيض */
+    --logo-fill: black;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,9 +34,11 @@
 
 body { 
     width: 100%; 
-    background-color: #050505; 
-    color: #f5f5f5; 
+    background-color: var(--bg-main); 
+    color: var(--text-main); 
     overflow-x: hidden;
+    /* ⚠️ ترانزيشن للصفحة كلها ⚠️ */
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 /* =========================================
@@ -24,21 +53,22 @@ body {
     justify-content: space-between; 
     align-items: center; 
     z-index: 1000;
-    transition: background-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+    transition: background-color 0.5s ease, padding 0.4s ease, box-shadow 0.4s ease, border-color 0.5s ease;
     background-color: transparent; 
 }
 
 #navbar.scrolled {
-    background-color: rgba(5, 5, 5, 0.95); 
+    background-color: var(--bg-navbar-scrolled); 
     backdrop-filter: blur(10px);
     box-shadow: 0 5px 20px rgba(0, 255, 170, 0.1);
     padding: 15px 50px;
 }
 
-.logo { display: flex; align-items: center; gap: 10px; font-size: 26px; font-weight: 900; letter-spacing: 2px; }
+.logo { display: flex; align-items: center; gap: 10px; font-size: 26px; font-weight: 900; letter-spacing: 2px; transition: color 0.5s ease; }
+.logo svg { fill: var(--logo-fill); transition: fill 0.5s ease; }
 .nav-right { display: flex; align-items: center; gap: 40px; }
 .nav-links { list-style: none; display: flex; gap: 30px; }
-.nav-links a { text-decoration: none; color: #fff; font-weight: bold; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s ease, text-shadow 0.3s ease; }
+.nav-links a { text-decoration: none; color: var(--text-main); font-weight: bold; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.5s ease, text-shadow 0.3s ease; }
 .nav-links a:hover { color: #00ffaa; text-shadow: 0 0 10px rgba(0, 255, 170, 0.5); } 
 
 /* =========================================
@@ -64,8 +94,10 @@ body {
     left: 0;
     width: 100%;
     height: 30%; 
-    background: linear-gradient(to bottom, transparent, #050505);
+    /* ⚠️ ربط التدرج بالخلفية عشان يتغير للون الفاتح في اللايت مود بنعومة ⚠️ */
+    background: linear-gradient(to bottom, transparent, var(--bg-main));
     pointer-events: none;
+    transition: background 0.5s ease;
 }
 
 /* =========================================
@@ -90,33 +122,37 @@ body {
     margin: 0;
     line-height: 1;
     color: transparent;
-    -webkit-text-stroke: 3px #00ffaa; 
+    -webkit-text-stroke: 3px var(--accent-color); 
     text-shadow: 0 0 30px rgba(0, 255, 170, 0.4); 
+    /* ⚠️ ترانزيشن للإطار الخارجي ⚠️ */
+    transition: -webkit-text-stroke 0.5s ease, color 0.5s ease;
 }
 
 .hero-subtitle {
     font-size: 1.5rem;
-    color: #f5f5f5;
+    color: var(--text-main);
     letter-spacing: 8px;
     text-transform: uppercase;
     font-weight: bold;
     padding-left: 10px; 
+    transition: color 0.5s ease;
 }
 
 /* =========================================
    تنسيق الأزرار 
    ========================================= */
 .btn {
-    padding: 15px 40px; background-color: transparent; color: #fff; 
-    border: 2px solid #00ffaa; 
+    padding: 15px 40px; background-color: transparent; color: var(--text-main); 
+    border: 2px solid var(--accent-color); 
     text-transform: uppercase; font-weight: bold; font-size: 1.2rem; letter-spacing: 2px;
-    text-decoration: none; transition: all 0.4s ease; position: relative; 
+    text-decoration: none; position: relative; 
     overflow: hidden !important; 
     z-index: 1; display: inline-block; cursor: pointer;
+    transition: color 0.5s ease, border-color 0.5s ease, background-color 0.5s ease;
 }
-.btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background-color: #00ffaa; z-index: -1; transition: all 0.4s ease; }
+.btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background-color: var(--accent-color); z-index: -1; transition: all 0.4s ease; }
 .btn:hover::before { left: 0; }
-.btn:hover { color: #050505; box-shadow: 0 0 20px #00ffaa; }
+.btn:hover { color: #050505; box-shadow: 0 0 20px var(--accent-color); }
 
 /* =========================================
    صفحة المطور
@@ -128,7 +164,9 @@ body {
     align-items: center;
     justify-content: center;
     padding: 80px 50px 50px;
-    background-color: #050505; 
+    background-color: var(--bg-main); 
+    /* ⚠️ ترانزيشن لخلفية سيكشن المطور ⚠️ */
+    transition: background-color 0.5s ease;
 }
 
 /* الضي الأزرق طالع من أرضية الصفحة من تحت لفوق */
@@ -162,12 +200,13 @@ body {
     flex: 1; 
     text-align: left; 
 }
-.profile-title { font-size: 4.5rem; color: #fff; font-weight: 900; line-height: 1.1; margin-bottom: 10px; text-transform: uppercase; text-shadow: 0 0 20px rgba(0, 255, 170, 0.3); letter-spacing: 2px; }
-.profile-subtitle { font-size: 1.5rem; color: #00ffaa; margin-bottom: 30px; letter-spacing: 2px; font-weight: bold; text-transform: uppercase; }
-.profile-bio { font-size: 1.2rem; color: #e0e0e0; line-height: 1.8; margin-bottom: 40px; max-width: 90%; }
+/* ⚠️ ترانزيشن للكلام ⚠️ */
+.profile-title { font-size: 4.5rem; color: var(--text-main); font-weight: 900; line-height: 1.1; margin-bottom: 10px; text-transform: uppercase; text-shadow: 0 0 20px rgba(0, 255, 170, 0.3); letter-spacing: 2px; transition: color 0.5s ease; }
+.profile-subtitle { font-size: 1.5rem; color: var(--accent-color); margin-bottom: 30px; letter-spacing: 2px; font-weight: bold; text-transform: uppercase; transition: color 0.5s ease; }
+.profile-bio { font-size: 1.2rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 40px; max-width: 90%; transition: color 0.5s ease; }
 
-.linkedin-btn { display: inline-flex; align-items: center; gap: 12px; border-color: #0077b5; background: rgba(0, 119, 181, 0.1); }
-.linkedin-btn:hover { background-color: #0077b5; box-shadow: 0 0 25px rgba(0, 119, 181, 0.6); color: #fff; }
+.linkedin-btn { display: inline-flex; align-items: center; gap: 12px; border-color: #0077b5; background: rgba(0, 119, 181, 0.1); transition: color 0.5s ease, border-color 0.5s ease, background-color 0.5s ease, box-shadow 0.3s ease; }
+.linkedin-btn:hover { background-color: #0077b5; box-shadow: 0 0 25px rgba(0, 119, 181, 0.6); color: var(--bg-main); }
 .linkedin-btn::before { background-color: #0077b5; }
 
 /* ---------------------------------
@@ -185,13 +224,14 @@ body {
     width: 100%; 
     max-width: 550px; 
     aspect-ratio: 3 / 4; 
-    background: #0a0a0a; 
+    background: var(--bg-card); 
     border-radius: 20px; 
     overflow: hidden; 
     position: relative;
     border: 1px solid rgba(255, 255, 255, 0.05);
     box-shadow: 0 20px 50px rgba(0,0,0,0.8); 
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    /* ⚠️ ترانزيشن للكارت وللونه ⚠️ */
+    transition: transform 0.5s ease, box-shadow 0.5s ease, background-color 0.5s ease, border-color 0.5s ease;
     z-index: 2; 
 }
 
@@ -229,7 +269,6 @@ body {
 @media (max-width: 900px) {
     #developer-profile { padding: 120px 30px 60px; }
     
-    /* ⚠️ التعديل السحري هنا: عكسنا الترتيب عشان الصورة تظهر قبل النص ⚠️ */
     .profile-container { 
         flex-direction: column-reverse; 
         gap: 50px; 
@@ -238,10 +277,7 @@ body {
     
     .profile-text { text-align: center; }
     .profile-bio { max-width: 100%; margin: 0 auto 30px; }
-    
-    /* ⚠️ التعديل التاني: شيلنا إخفاء الـ <br> عشان الاسم يتكتب على سطرين صح ⚠️ */
     .profile-title { font-size: 3.5rem; } 
-    
     .profile-subtitle { font-size: 1.3rem; }
     .image-card { max-width: 450px; }
     
@@ -260,7 +296,6 @@ body {
     .profile-subtitle { font-size: 1rem; }
     .profile-bio { font-size: 1rem; }
     
-    /* الكارت هياخد 90% من عرض الشاشة عشان يبقى متسنتر وشكله حلو */
     .image-card { max-width: 90vw; aspect-ratio: 4 / 5; } 
     .linkedin-btn { width: 100%; justify-content: center; }
     
@@ -273,7 +308,7 @@ body {
     }
     .hero-title { 
         font-size: 4.5rem; 
-        -webkit-text-stroke: 2px #00ffaa; 
+        -webkit-text-stroke: 2px var(--accent-color); 
         letter-spacing: 3px;
     }
     .hero-subtitle { 
@@ -281,4 +316,50 @@ body {
         letter-spacing: 3px; 
         padding-left: 5px; 
     }
+}
+
+/* =========================================================
+   تعديلات خاصة للـ Light Mode 
+   ========================================================= */
+body.light-mode #navbar {
+    background-color: transparent;
+}
+body.light-mode #navbar.scrolled {
+    background-color: var(--bg-navbar-scrolled);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+body.light-mode .logo {
+    color: var(--text-main);
+}
+body.light-mode .logo svg, 
+body.light-mode .moon-icon,
+body.light-mode .sun-icon {
+    fill: var(--logo-fill);
+    transition: fill 0.5s ease;
+}
+
+body.light-mode .hero-title {
+    -webkit-text-stroke: 3px var(--accent-color);
+}
+
+body.light-mode .hero-subtitle {
+    /* لازم يفضل أبيض مهما كان المود لأنه فوق صورة ضلمة (خلفية إيساجي) */
+    color: #fff; 
+}
+
+body.light-mode .profile-title {
+    color: var(--text-main);
+}
+
+body.light-mode .profile-subtitle {
+    color: var(--accent-color);
+}
+
+body.light-mode .profile-bio {
+    color: var(--text-muted);
+}
+
+body.light-mode .image-card {
+    border-color: rgba(0,0,0,0.1);
+    background: var(--bg-card);
 }
