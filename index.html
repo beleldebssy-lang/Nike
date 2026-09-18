@@ -53,10 +53,16 @@
         </div>
     </nav>
 
-    <!-- القائمة الجانبية المخفية -->
+  <!-- القائمة الجانبية المخفية -->
     <div id="sidebar" class="sidebar">
         <div class="close-btn" id="close-btn">&times;</div>
         <ul class="sidebar-links">
+            <!-- روابط أقسام الصفحة (بتظهر في الموبايل بس وتقفل القائمة أول ما تدوس عليها) -->
+            <li class="mobile-only"><a href="#hero" onclick="document.getElementById('sidebar').classList.remove('active');">Home</a></li>
+            <li class="mobile-only"><a href="#about" onclick="document.getElementById('sidebar').classList.remove('active');">The Egoist</a></li>
+            <li class="mobile-only" style="margin-bottom: 15px;"><a href="#footer" onclick="document.getElementById('sidebar').classList.remove('active');">About</a></li>
+            
+            <!-- روابط المنتجات -->
             <li><a href="shirts.html" target="_blank">Football Shirts</a></li>
             <li><a href="boots.html" target="_blank">Football Boots</a></li>
         </ul>
