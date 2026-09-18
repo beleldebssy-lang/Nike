@@ -899,3 +899,7 @@ body.light-mode .dev-title {
         display: block;
     }
 }
+/* إخفاء الروابط الأساسية من القائمة الجانبية في اللاب توب */
+.mobile-only {
+    display: none;
+}
