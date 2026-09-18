@@ -3,10 +3,12 @@
 // ==========================================
 window.addEventListener('scroll', function() {
     const navbar = document.getElementById('navbar');
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
+    if (navbar) {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
     }
 });
 
@@ -75,7 +77,6 @@ function toggleTheme() {
     }
 }
 
-// الكشف عن الثيم عند التحميل عشان يفضل ثابت زي ما اليوزر اختار
 document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');
     const body = document.body;
@@ -91,4 +92,33 @@ document.addEventListener('DOMContentLoaded', () => {
         if(sunIcon) sunIcon.style.display = 'none';
         if(moonIcon) moonIcon.style.display = 'block';
     }
+});
+
+// ==========================================
+// 5. حل مشكلة وضع توفير الطاقة (Low Power Mode) لفيديو المطور
+// ==========================================
+window.addEventListener("DOMContentLoaded", () => {
+    const videos = document.querySelectorAll("video");
+    videos.forEach(vid => {
+        let playPromise = vid.play();
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                // الفيديو شغال تمام مفيش مشكلة
+            }).catch(error => {
+                // لو المتصفح وقف الفيديو عشان الموبايل على وضع توفير الطاقة
+                const posterSrc = vid.getAttribute('poster');
+                if (posterSrc) {
+                    // بنعمل عنصر صورة جديد ونحط فيه مسار الـ poster
+                    const fallbackImg = document.createElement('img');
+                    fallbackImg.src = posterSrc;
+                    fallbackImg.alt = "Profile Image";
+                    
+                    // بنحط الصورة مكان الفيديو بالظبط عشان تاخد نفس الـ CSS والـ Hover
+                    vid.parentElement.appendChild(fallbackImg);
+                }
+                // بنمسح الفيديو خالص عشان نشيل علامة הـ Play المزعجة
+                vid.remove(); 
+            });
+        }
+    });
 });
