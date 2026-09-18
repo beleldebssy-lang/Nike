@@ -178,3 +178,28 @@ document.addEventListener('DOMContentLoaded', () => {
         if(moonIcon) moonIcon.style.display = 'block';
     }
 });
+// ==========================================
+// حل مشكلة وضع توفير الطاقة (Low Power Mode) في الموبايل
+// ==========================================
+window.addEventListener("DOMContentLoaded", () => {
+    const videos = document.querySelectorAll("video");
+    videos.forEach(vid => {
+        // بنحاول نشغل الفيديو برمجياً
+        let playPromise = vid.play();
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                // لو اشتغل، يبقى التليفون مش في وضع توفير الطاقة (كله تمام)
+            }).catch(error => {
+                // لو مجبش نتيجة (التليفون مانعه عشان يوفر طاقة)
+                // هناخد الصورة اللي في الـ poster ونحطها خلفية ونخفي الفيديو خالص!
+                const posterSrc = vid.getAttribute('poster');
+                if (posterSrc) {
+                    vid.parentElement.style.backgroundImage = `url('${posterSrc}')`;
+                    vid.parentElement.style.backgroundSize = 'cover';
+                    vid.parentElement.style.backgroundPosition = 'center top';
+                }
+                vid.style.display = 'none'; // إخفاء الفيديو بعلامة الـ Play اللي جواه
+            });
+        }
+    });
+});
