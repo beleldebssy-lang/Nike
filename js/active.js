@@ -184,21 +184,14 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener("DOMContentLoaded", () => {
     const videos = document.querySelectorAll("video");
     videos.forEach(vid => {
-        // بنحاول نشغل الفيديو برمجياً
         let playPromise = vid.play();
         if (playPromise !== undefined) {
             playPromise.then(() => {
-                // لو اشتغل، يبقى التليفون مش في وضع توفير الطاقة (كله تمام)
+                // الفيديو شغال تمام
             }).catch(error => {
-                // لو مجبش نتيجة (التليفون مانعه عشان يوفر طاقة)
-                // هناخد الصورة اللي في الـ poster ونحطها خلفية ونخفي الفيديو خالص!
-                const posterSrc = vid.getAttribute('poster');
-                if (posterSrc) {
-                    vid.parentElement.style.backgroundImage = `url('${posterSrc}')`;
-                    vid.parentElement.style.backgroundSize = 'cover';
-                    vid.parentElement.style.backgroundPosition = 'center top';
-                }
-                vid.style.display = 'none'; // إخفاء الفيديو بعلامة الـ Play اللي جواه
+                // لو المتصفح وقف الفيديو عشان توفير الطاقة
+                // هنخفي الفيديو بس، والصورة كدة كدة محطوطة كخلفية في الـ CSS ومظبوطة
+                vid.style.display = 'none'; 
             });
         }
     });
